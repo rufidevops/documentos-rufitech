@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Documentos - RUFI Tech / SIDERT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2F5597 0%, #4472C4 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .welcome {
+            background: #f8f9fa;
+            border-left: 5px solid #4472C4;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        
+        .welcome h2 {
+            color: #2F5597;
+            margin-bottom: 15px;
+        }
+        
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .document-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #4472C4;
+        }
+        
+        .document-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .document-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2F5597;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .document-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .document-description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .document-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #4472C4;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2F5597;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(68, 114, 196, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px;
+        }
+        
+        .badge-new {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-important {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .badge-policy {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid #4472C4;
+        }
+        
+        .footer-info {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4472C4;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
+            .document-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Biblioteca de Documentos</h1>
+            <p>RUFI Tech Company / SIDERT S.A. de C.V.</p>
+        </div>
+        
+        <div class="content">
+            <div class="welcome">
+                <h2>¡Bienvenido!</h2>
+                <p>Accede a documentos importantes, políticas y recursos del equipo. Todos los archivos están disponibles para consulta y descarga.</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Documentos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2026</div>
+                    <div class="stat-label">Última Actualización</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Disponibilidad</div>
+                </div>
+            </div>
+            
+            <h2 style="color: #2F5597; margin: 30px 0 20px;">📄 Documentos Disponibles</h2>
+            
+            <div class="document-grid">
+                <!-- DOCUMENTO 1: Políticas y Estándares de Desarrollo -->
+                <div class="document-card" onclick="window.location.href='documento_politicas_desarrollo.html'">
+                    <div class="document-icon">📋</div>
+                    <div class="document-title">
+                        Políticas de Oficina y Estándares de Desarrollo
+                    </div>
+                    <div class="document-meta">
+                        📅 11 de Marzo 2026<br>
+                        👥 Reunión de Equipo
+                    </div>
+                    <div>
+                        <span class="badge badge-new">NUEVO</span>
+                        <span class="badge badge-important">OBLIGATORIO</span>
+                        <span class="badge badge-policy">POLÍTICAS</span>
+                    </div>
+                    <div class="document-description">
+                        Lineamientos completos de vestimenta, comportamiento en oficina, y estándares de desarrollo de software (Clean Code, SOLID, nomenclatura BD, etc.)
+                    </div>
+                    <div class="document-actions">
+                        <a href="documento_politicas_desarrollo.html" class="btn btn-primary">
+                            👁️ Ver Online
+                        </a>
+                        <a href="documento_politicas_desarrollo.html" download class="btn btn-secondary">
+                            💾 Descargar
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ESPACIO PARA MÁS DOCUMENTOS -->
+                <!-- Puedes agregar más tarjetas aquí siguiendo el mismo formato -->
+                
+            </div>
+            
+            <div class="welcome" style="margin-top: 40px;">
+                <h2>ℹ️ Instrucciones de Uso</h2>
+                <p style="margin-top: 10px;">
+                    <strong>Para ver un documento:</strong> Haz clic en "👁️ Ver Online"<br>
+                    <strong>Para descargar:</strong> Haz clic en "💾 Descargar"<br>
+                    <strong>Para compartir:</strong> Escanea el código QR o comparte este enlace
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-info">
+                <strong>RUFI Tech Company</strong><br>
+                Operando dentro de SIDERT S.A. de C.V.<br>
+                SOFOM ENR - 27+ años de historia<br><br>
+                <small>Sistema de Documentos Digitales v1.0 | 2026</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

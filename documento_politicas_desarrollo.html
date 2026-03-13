@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Oficina y Estándares de Desarrollo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2F5597 0%, #4472C4 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .meta-info {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            border-bottom: 3px solid #4472C4;
+        }
+        
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            margin: 5px 10px 5px 0;
+        }
+        
+        .meta-label {
+            font-weight: bold;
+            color: #2F5597;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #2F5597;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4472C4;
+        }
+        
+        .section-icon {
+            margin-right: 10px;
+        }
+        
+        .subsection {
+            margin: 25px 0;
+        }
+        
+        .subsection-title {
+            font-size: 1.3em;
+            color: #4472C4;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .text-block {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4472C4;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .highlight-box strong {
+            color: #856404;
+        }
+        
+        .important-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .important-box strong {
+            color: #721c24;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .success-box strong {
+            color: #155724;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+        
+        .principle-card {
+            background: white;
+            border: 2px solid #4472C4;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .principle-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2F5597;
+            margin-bottom: 10px;
+        }
+        
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-comment {
+            color: #6a9955;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        th {
+            background: #4472C4;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .summary {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .summary h2 {
+            color: #2F5597;
+            margin-bottom: 20px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #4472C4;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background: #6c757d;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .print-btn, .btn-back {
+                display: none;
+            }
+            
+            .document {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .meta-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📋 Políticas de Oficina y Estándares de Desarrollo</h1>
+            <p>RUFI Tech Company / SIDERT S.A. de C.V.</p>
+        </div>
+        
+        <!-- META INFO -->
+        <div class="meta-info">
+            <div class="meta-row">
+                <div class="meta-item">
+                    <span class="meta-label">📅 Fecha:</span> 11 de Marzo 2026, 13:21
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">📍 Ubicación:</span> Oficina / Reunión Virtual
+                </div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-item">
+                    <span class="meta-label">👥 Asistentes:</span> Víctor, Eric, Alexis, Dani y equipo de desarrollo
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONTENT -->
+        <div class="content">
+            
+            <!-- SECCIÓN 1: POLÍTICAS DE OFICINA -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">👔</span>
+                    Políticas de Oficina y Vestimenta
+                </h2>
+                
+                <!-- Lineamientos de Vestimenta -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Lineamientos de Vestimenta</h3>
+                    
+                    <div class="text-block">
+                        <p>Se establecieron las normas de vestimenta para proyectar una imagen profesional:</p>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Ropa en buen estado:</strong> Debe estar limpia y en buen estado. Se prohíben prendas deslavadas, rotas o con estampados políticos/deportivos.</li>
+                        
+                        <li><strong>Eventos formales</strong> (desayunos, webinars, hackatones):
+                            <ul>
+                                <li>✅ Pantalón de vestir</li>
+                                <li>✅ Camisa</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Días sábados o informales:</strong>
+                            <ul>
+                                <li>✅ Mezclilla</li>
+                                <li>✅ Tenis limpios</li>
+                                <li>✅ Playeras tipo polo</li>
+                                <li>❌ Calzado abierto (sandalias, chanclas)</li>
+                            </ul>
+                        </li>
+                        
+                        <li><strong>Uniforme:</strong> Deberá portarse según el calendario de Recursos Humanos una vez entregado.</li>
+                    </ul>
+                </div>
+                
+                <!-- Accesorios -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Accesorios y Cuidado Personal</h3>
+                    
+                    <div class="important-box">
+                        <strong>⚠️ Prohibiciones:</strong>
+                        <ul>
+                            <li>Lentes oscuros dentro de las instalaciones</li>
+                            <li>Cinturones con hebillas excesivamente grandes</li>
+                            <li>Joyería ostentosa (la empresa no se hace responsable por pérdidas)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="success-box">
+                        <strong>✅ Requisitos de Presentación:</strong>
+                        <ul>
+                            <li>Cabello bien peinado (recogido si es largo)</li>
+                            <li>Barba y bigote bien recortados</li>
+                            <li>Manos y uñas siempre limpias</li>
+                            <li>Accesorios de tamaño normal</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Comportamiento y Salud -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Comportamiento y Salud en la Oficina</h3>
+                    
+                    <div class="highlight-box">
+                        <strong>🏢 Espacio de Trabajo:</strong>
+                        <ul>
+                            <li>El área de trabajo debe mantenerse limpia</li>
+                            <li>No se permite comer en el área de trabajo</li>
+                            <li>Las visitas al baño no deben exceder 15 minutos (salvo emergencias)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="success-box">
+                        <strong>💚 Cuidado de la Salud:</strong>
+                        <ul>
+                            <li><strong>Pausas activas:</strong> Tomar descansos de 10 minutos para caminar tras cargas extenuantes de trabajo</li>
+                            <li><strong>Descanso visual:</strong> Parpadear 1 o 2 minutos cada 30 minutos de uso de pantalla</li>
+                            <li><strong>Brillo de monitores:</strong> Ajustar a la mitad para proteger la retina</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECCIÓN 2: ESTÁNDARES DE DESARROLLO -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">💻</span>
+                    Estándares de Desarrollo de Software
+                </h2>
+                
+                <div class="important-box">
+                    <strong>📌 Nota Importante:</strong> Los nuevos lineamientos aplicarán para <strong>nuevas funcionalidades y refactorizaciones</strong>, no para el código legado.
+                </div>
+                
+                <!-- Clean Code -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Prácticas de Código Limpio (Clean Code)</h3>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">🎯 KISS - Keep It Simple, Stupid</div>
+                        <p>Mantener las soluciones simples y directas. Evitar la complejidad innecesaria.</p>
+                        <div class="code-example">
+<span class="code-comment">// ❌ MAL: Complejo e innecesario</span>
+function verificarEdad(edad) {
+    if (edad >= 18) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+<span class="code-comment">// ✅ BIEN: Simple y directo</span>
+function verificarEdad(edad) {
+    return edad >= 18;
+}
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">♻️ DRY - Don't Repeat Yourself</div>
+                        <p>No repetir código. Crear servicios reutilizables en lugar de copiar y pegar.</p>
+                        <div class="code-example">
+<span class="code-comment">// ❌ MAL: Código duplicado</span>
+function calcularInteresMensual(monto) {
+    return monto * 0.05;
+}
+function calcularInteresAnual(monto) {
+    return monto * 0.05 * 12;
+}
+
+<span class="code-comment">// ✅ BIEN: Reutilizable</span>
+function calcularInteres(monto, tasa, meses = 1) {
+    return monto * tasa * meses;
+}
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">🚫 YAGNI - You Aren't Gonna Need It</div>
+                        <p>No programar para escenarios futuros no solicitados. Cualquier mejora detectada debe documentarse en un <strong>Plan de Desarrollo de Software (PDS)</strong> para su posterior evaluación.</p>
+                        <div class="highlight-box">
+                            <strong>⚠️ Importante:</strong> Si detectas una posible mejora futura, NO la implementes ahora. En su lugar:
+                            <ol>
+                                <li>Documéntala en el PDS</li>
+                                <li>Justifica su necesidad</li>
+                                <li>Espera aprobación del equipo</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SOLID -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Principios SOLID</h3>
+                    
+                    <p style="margin-bottom: 20px;">Se implementarán los principios SOLID en los nuevos desarrollos:</p>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">S - Responsabilidad Única (Single Responsibility)</div>
+                        <p>Una clase, una tarea. Cada clase debe tener una sola razón para cambiar.</p>
+                        <div class="code-example">
+<span class="code-comment">// ❌ MAL: Hace demasiado</span>
+class Usuario {
+    guardarEnBD() { }
+    enviarEmail() { }
+    validarDatos() { }
+}
+
+<span class="code-comment">// ✅ BIEN: Responsabilidad única</span>
+class Usuario { }
+class UsuarioRepository { guardarEnBD() { } }
+class EmailService { enviarEmail() { } }
+class UsuarioValidator { validarDatos() { } }
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">O - Abierto/Cerrado (Open/Closed)</div>
+                        <p>Abierto a extensión, cerrado a modificación. Puedes agregar funcionalidad sin modificar código existente.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">L - Sustitución de Liskov (Liskov Substitution)</div>
+                        <p>Las clases hijas deben poder reemplazar a sus clases padres sin romper la funcionalidad.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">I - Segregación de Interfaces (Interface Segregation)</div>
+                        <p>Interfaces pequeñas y específicas. No forzar a las clases a implementar métodos que no usan.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">D - Inversión de Dependencias (Dependency Inversion)</div>
+                        <p>Depender de abstracciones/interfaces, no de implementaciones concretas.</p>
+                    </div>
+                </div>
+                
+                <!-- Nomenclatura -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Nomenclatura y Autodocumentación</h3>
+                    
+                    <div class="success-box">
+                        <strong>✅ El código debe ser autodocumentado:</strong>
+                        <ul>
+                            <li>Los nombres deben explicar el "qué" y el "por qué"</li>
+                            <li>Usar verbos y sustantivos claros</li>
+                            <li>Evitar nombres genéricos o vagos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="code-example">
+<span class="code-comment">// ❌ MAL: No autodocumentado</span>
+function calc(m, t, p) {
+    return m * t * p;
+}
+
+<span class="code-comment">// ✅ BIEN: Autodocumentado</span>
+function calcularInteresMoratorio(montoVencido, tasaMora, plazoVencido) {
+    return montoVencido * tasaMora * plazoVencido;
+}
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>📝 Regla de Comentarios:</strong>
+                        <p>Los comentarios solo deben explicar el <strong>"por qué"</strong> se tomó una decisión técnica, no el <strong>"qué"</strong> hace el código.</p>
+                        <div class="code-example">
+<span class="code-comment">// ❌ MAL: Explica el QUÉ (obvio)</span>
+// Suma dos números
+function sumar(a, b) {
+    return a + b;
+}
+
+<span class="code-comment">// ✅ BIEN: Explica el POR QUÉ</span>
+// Usamos decimales para evitar errores de redondeo en intereses
+function calcularInteres(monto, tasa) {
+    return parseFloat((monto * tasa).toFixed(2));
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECCIÓN 3: BASE DE DATOS -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🗄️</span>
+                    Base de Datos y Arquitectura Backend
+                </h2>
+                
+                <!-- Nomenclatura BD -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Nomenclatura y Tipos de Datos en BD</h3>
+                    
+                    <div class="important-box">
+                        <strong>📌 Convenciones:</strong>
+                        <ul>
+                            <li><strong>Base de Datos:</strong> snake_case</li>
+                            <li><strong>Código (backend):</strong> camelCase</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Convención</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Tablas</strong></td>
+                                    <td>Inglés, plural</td>
+                                    <td>users, roles, loan_applications</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Columnas</strong></td>
+                                    <td>sustantivo_descriptivo</td>
+                                    <td>user_id, full_name, created_at</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Llaves primarias</strong></td>
+                                    <td>tabla_id</td>
+                                    <td>user_id, role_id, loan_id</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Llaves foráneas</strong></td>
+                                    <td>fk_tabla_columna</td>
+                                    <td>fk_users_role_id</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Índices</strong></td>
+                                    <td>idx_tabla_columna</td>
+                                    <td>idx_users_email</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Llaves únicas</strong></td>
+                                    <td>uq_tabla_columna</td>
+                                    <td>uq_users_email</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4 style="color: #2F5597; margin: 25px 0 15px;">Tipos de Datos Estándar:</h4>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Uso</th>
+                                    <th>Tipo de Dato</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>IDs / Identificadores</td>
+                                    <td>int / bigint</td>
+                                    <td>user_id bigint</td>
+                                </tr>
+                                <tr>
+                                    <td>Tokens / UUIDs</td>
+                                    <td>uuid</td>
+                                    <td>session_token uuid</td>
+                                </tr>
+                                <tr>
+                                    <td>Texto corto</td>
+                                    <td>varchar(50)</td>
+                                    <td>user_name varchar(50)</td>
+                                </tr>
+                                <tr>
+                                    <td>Texto largo</td>
+                                    <td>text</td>
+                                    <td>description text</td>
+                                </tr>
+                                <tr>
+                                    <td>Booleanos</td>
+                                    <td>bit / boolean</td>
+                                    <td>is_active boolean</td>
+                                </tr>
+                                <tr>
+                                    <td>Fechas</td>
+                                    <td>date / timestamp</td>
+                                    <td>created_at timestamp</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Arquitectura Backend -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Responsabilidades de la Arquitectura</h3>
+                    
+                    <p>Se definieron estrictamente las capas del backend:</p>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">🎮 Controladores (Controllers)</div>
+                        <ul>
+                            <li>Orquestan las solicitudes HTTP</li>
+                            <li>Validan la información de entrada</li>
+                            <li>Retornan respuestas HTTP apropiadas</li>
+                            <li><strong>NO contienen lógica de negocio</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">⚙️ Servicios (Services)</div>
+                        <ul>
+                            <li>Manejan toda la lógica de negocio</li>
+                            <li>Coordinan operaciones entre repositorios</li>
+                            <li>Aplican reglas de negocio</li>
+                            <li>Transforman datos para presentación</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">💾 Repositorios (Repositories)</div>
+                        <ul>
+                            <li>Gestionan el acceso a datos</li>
+                            <li>Ejecutan queries a la base de datos</li>
+                            <li>Mapean entidades a objetos</li>
+                            <li><strong>NO contienen lógica de negocio</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">📦 DTOs (Data Transfer Objects)</div>
+                        <ul>
+                            <li>Transportan datos entre capas</li>
+                            <li>Última capa de validación</li>
+                            <li>Definen contratos de entrada/salida</li>
+                            <li>Protegen la estructura interna</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-name">🏛️ Entidades (Entities)</div>
+                        <ul>
+                            <li>Representación exclusiva de tablas de BD</li>
+                            <li>Mapeo 1:1 con la base de datos</li>
+                            <li>Contienen solo propiedades, sin lógica</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Asincronismo -->
+                <div class="subsection">
+                    <h3 class="subsection-title">Asincronismo y Revisiones de Código</h3>
+                    
+                    <div class="important-box">
+                        <strong>⚡ Regla Obligatoria:</strong>
+                        <p>Todos los métodos de entrada y salida de datos (I/O) deben ser asíncronos utilizando <code>async/await</code>.</p>
+                    </div>
+                    
+                    <div class="code-example">
+<span class="code-comment">// ❌ MAL: Síncrono</span>
+function obtenerUsuario(id) {
+    return db.query('SELECT * FROM users WHERE id = ?', [id]);
+}
+
+<span class="code-comment">// ✅ BIEN: Asíncrono</span>
+async function obtenerUsuario(id) {
+    return await db.query('SELECT * FROM users WHERE id = ?', [id]);
+}
+                    </div>
+                    
+                    <div class="success-box">
+                        <strong>✅ Code Reviews Semanales:</strong>
+                        <p>Se implementarán sesiones <strong>obligatorias</strong> de revisión de código (Code Reviews) al final de cada semana, comenzando con los módulos desarrollados recientemente.</p>
+                        <ul>
+                            <li><strong>Cuándo:</strong> Viernes antes del cierre</li>
+                            <li><strong>Qué revisar:</strong> Módulos de la semana</li>
+                            <li><strong>Objetivo:</strong> Verificar cumplimiento de estándares</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RESUMEN FINAL -->
+            <div class="summary">
+                <h2>📋 Resumen Ejecutivo</h2>
+                
+                <div class="summary-item">
+                    <strong>🎯 Objetivo 1:</strong> Reglas claras de vestimenta, higiene y comportamiento en la oficina para mantener una imagen profesional y cuidar la salud del equipo.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>💻 Objetivo 2:</strong> Metodologías de Clean Code (KISS, DRY, YAGNI) y principios SOLID para garantizar que el nuevo código sea mantenible, escalable y autodocumentado.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>🗄️ Objetivo 3:</strong> Nomenclatura estandarizada en inglés para el código y la base de datos, eliminando ambigüedades en la creación de tablas, columnas y variables.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>🏗️ Objetivo 4:</strong> Responsabilidades delimitadas de cada capa de la arquitectura backend (Controladores, Servicios, Repositorios, DTOs, Entidades) para un flujo de datos ordenado y validado.
+                </div>
+                
+                <div class="summary-item">
+                    <strong>⚡ Objetivo 5:</strong> Uso obligatorio de métodos asíncronos para operaciones I/O y implementación de revisiones de código semanales para mantener la calidad del software.
+                </div>
+            </div>
+            
+            <!-- BOTÓN VOLVER -->
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="index.html" class="btn-back">⬅️ Volver a la Biblioteca</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BOTÓN IMPRIMIR -->
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+    
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR - Biblioteca de Documentos SIDERT</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 8.5in;
+            height: 11in;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border: 3px solid #2F5597;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .company-name {
+            font-size: 2.5em;
+            color: #2F5597;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .company-subtitle {
+            font-size: 1.3em;
+            color: #4472C4;
+            margin-bottom: 30px;
+        }
+        
+        .main-title {
+            font-size: 3em;
+            color: #2F5597;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .qr-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .qr-placeholder {
+            width: 400px;
+            height: 400px;
+            background: white;
+            border: 5px solid #4472C4;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .qr-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .qr-instruction {
+            font-size: 1.5em;
+            color: #666;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        
+        .url-section {
+            background: #fff3cd;
+            border: 3px dashed #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .url-label {
+            font-size: 1.2em;
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .url-text {
+            font-size: 1.4em;
+            color: #2F5597;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+        }
+        
+        .content-list {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        .content-title {
+            font-size: 1.5em;
+            color: #2F5597;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .content-items {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .content-items li {
+            font-size: 1.2em;
+            color: #555;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content-items li:last-child {
+            border-bottom: none;
+        }
+        
+        .content-items li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .footer-section {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 1em;
+        }
+        
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .poster {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <!-- HEADER -->
+        <div class="header-section">
+            <div class="company-name">RUFI TECH COMPANY</div>
+            <div class="company-subtitle">SIDERT S.A. de C.V.</div>
+            <div class="icon">📚</div>
+            <div class="main-title">Biblioteca Digital</div>
+        </div>
+        
+        <!-- QR CODE -->
+        <div class="qr-section">
+            <div class="qr-placeholder">
+                <!-- 
+                INSTRUCCIONES:
+                1. Genera tu QR en: https://www.qr-code-generator.com/
+                2. Descarga la imagen
+                3. Reemplaza el comentario de abajo con:
+                   <img src="tu-qr.png" class="qr-image" alt="QR Code">
+                -->
+                
+                <div style="text-align: center; color: #999;">
+                    <div style="font-size: 3em;">📱</div>
+                    <div style="font-size: 1.2em; margin-top: 10px;">
+                        Aquí va tu código QR
+                    </div>
+                    <div style="font-size: 0.9em; margin-top: 10px; line-height: 1.4;">
+                        1. Sube estos archivos a GitHub Pages<br>
+                        2. Genera QR con tu URL<br>
+                        3. Descarga imagen QR<br>
+                        4. Inserta aquí
+                    </div>
+                </div>
+            </div>
+            <div class="qr-instruction">
+                📱 Escanea con tu celular para acceder
+            </div>
+        </div>
+        
+        <!-- URL ALTERNATIVA -->
+        <div class="url-section">
+            <div class="url-label">O visita directamente:</div>
+            <div class="url-text">
+                https://[tu-usuario].github.io/documentos-rufitech/
+            </div>
+            <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                (Reemplaza con tu URL de GitHub Pages)
+            </div>
+        </div>
+        
+        <!-- CONTENIDO DISPONIBLE -->
+        <div class="content-list">
+            <div class="content-title">📄 Documentos Disponibles:</div>
+            <ul class="content-items">
+                <li>Políticas de Oficina y Vestimenta</li>
+                <li>Estándares de Desarrollo de Software</li>
+                <li>Rankings Semanales SIDERT</li>
+                <li>Tutoriales y Guías</li>
+            </ul>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer-section">
+            <strong>RUFI Tech Company</strong><br>
+            Operando dentro de SIDERT S.A. de C.V.<br>
+            Sistema de Documentos Digitales v1.0 | 2026
+        </div>
+    </div>
+</body>
+</html>
